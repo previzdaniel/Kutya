@@ -24,7 +24,6 @@ namespace Kutya
 
                 kutyaFajtak.Add(new KutyaFajta(Convert.ToInt32(adat[0]), adat[1], adat[2]));
             }
-
             be.Close();
         }
 
@@ -43,7 +42,6 @@ namespace Kutya
                   adat[1]
                 ));
             }
-
             be.Close();
         }
 
@@ -62,7 +60,6 @@ namespace Kutya
                     Convert.ToInt32(adat[3]),
                     adat[4]));
             }
-
             be.Close();
         }
 
@@ -71,9 +68,28 @@ namespace Kutya
             Console.WriteLine($"3. feladat: Kutyanevek száma: {kutyaNevek.Count}");
         }
 
-        static void Negyedik()
+        static void Hatodik()
         {
+            double sum = 0;
+            foreach (var k in kutyaLista)
+            {
+                sum += k.Eletkor;
+            }
 
+            Console.WriteLine($"6. feladat: Kutyák átlagéletkora: {sum / kutyaLista.Count:N2}");
+        }
+
+        static void Hetedik()
+        {
+            int max = kutyaLista[0].Eletkor;
+            for (int i = 0; i < kutyaLista.Count; i++)
+            {
+                if (kutyaLista[i].Eletkor > max)
+                {
+                    max = kutyaLista[i].Eletkor;
+                }
+            }
+            Console.WriteLine(max);
         }
 
         static void Main(string[] args)
@@ -82,6 +98,8 @@ namespace Kutya
             KutyaNevekBeolvasas();
             KutyaBeolvasas();
             Harmadik();
+            Hatodik();
+            Hetedik();
 
 
             Console.ReadKey();
