@@ -11,10 +11,9 @@ namespace Kutya
         private int id;
         private string nev;
 
-        public string Nev
-        {
-            get { return nev; }
-        }
+
+        public int ID { get { return id; } }
+        public string Nev{ get { return nev; } }
 
         public KutyaNev(int id, string nev)
         {

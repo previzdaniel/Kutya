@@ -91,37 +91,67 @@ namespace Kutya
             }
             Console.WriteLine(max);
 
-            int fajta = 0;
-            int nev = 0;
-            for (int i = 0; i < kutyaFajtak.Count; i++)
+            int f = 0;
+            int n = 0;
+            for (int i = 0; i < kutyaLista.Count; i++)
             {
-                if (max == kutyaLista[i].Fajtaid)
+                if (kutyaLista[i].Eletkor == max)
                 {
-                    fajta = kutyaLista[i].Fajtaid;
-                    Console.WriteLine(fajta);
-                }
-                if (max == kutyaLista[i].Nevid)
-                {
-                    nev = kutyaLista[i].Nevid;
-                    Console.WriteLine(nev);
+                    f = kutyaLista[i].Fajtaid;
+                    n = kutyaLista[i].Nevid;
                 }
             }
+
+            string lf = "";
+            string ln = "";
+
+            for (int i = 0; i < kutyaFajtak.Count; i++)
+            {
+                if (f == kutyaFajtak[i].ID)
+                {
+                    lf = kutyaFajtak[i].Nev;
+                }
+            }
+
+            for (int i = 0; i < kutyaNevek.Count; i++)
+            {
+                if (n == kutyaNevek[i].ID)
+                {
+                    ln = kutyaNevek[i].Nev;
+                }
+            }
+
+            Console.WriteLine($"7. feladat: Legidősebb kutya neve és fajtája: {ln}, {lf}");
         }
 
         static void Nyolcadik()
         {
-            List<int> vizsgalt = new List<int>();
+            Dictionary<string, int> kutyaDatum = new Dictionary<string, int>();
+            List<int> datumFajtak = new List<int>();
+
             for (int i = 0; i < kutyaLista.Count; i++)
             {
                 if (kutyaLista[i].Vizsgalat == "2018.01.10")
                 {
-                    vizsgalt.Add(kutyaLista[i].ID);
+                    datumFajtak.Add(kutyaLista[i].Fajtaid);
                 }
             }
 
-            for (int i = 0; i < vizsgalt.Count; i++)
+            int fajtaSzam;
+            for (int i = 0; i < kutyaFajtak.Count; i++)
             {
-                Console.WriteLine(vizsgalt[i] + kutyaLista[i].Eletkor);
+                fajtaSzam = 0;
+                if (datumFajtak.Contains(kutyaFajtak[i].ID))
+                {
+                    fajtaSzam++;
+                    kutyaDatum.Add(kutyaFajtak[i].Nev, fajtaSzam);
+                }
+            }
+
+            Console.WriteLine("8. feladat: Január 10.-én vizsgált kutya fajták: ");
+            foreach (var k in kutyaDatum)
+            {
+                Console.WriteLine(k.Key + " " + k.Value + " kutya");
             }
         }
         static void Main(string[] args)
