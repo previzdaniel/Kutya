@@ -90,8 +90,40 @@ namespace Kutya
                 }
             }
             Console.WriteLine(max);
+
+            int fajta = 0;
+            int nev = 0;
+            for (int i = 0; i < kutyaFajtak.Count; i++)
+            {
+                if (max == kutyaLista[i].Fajtaid)
+                {
+                    fajta = kutyaLista[i].Fajtaid;
+                    Console.WriteLine(fajta);
+                }
+                if (max == kutyaLista[i].Nevid)
+                {
+                    nev = kutyaLista[i].Nevid;
+                    Console.WriteLine(nev);
+                }
+            }
         }
 
+        static void Nyolcadik()
+        {
+            List<int> vizsgalt = new List<int>();
+            for (int i = 0; i < kutyaLista.Count; i++)
+            {
+                if (kutyaLista[i].Vizsgalat == "2018.01.10")
+                {
+                    vizsgalt.Add(kutyaLista[i].ID);
+                }
+            }
+
+            for (int i = 0; i < vizsgalt.Count; i++)
+            {
+                Console.WriteLine(vizsgalt[i] + kutyaLista[i].Eletkor);
+            }
+        }
         static void Main(string[] args)
         {
             KutyafajtaBeolvasas();
@@ -100,7 +132,7 @@ namespace Kutya
             Harmadik();
             Hatodik();
             Hetedik();
-
+            Nyolcadik();
 
             Console.ReadKey();
         }
